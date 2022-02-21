@@ -45,11 +45,15 @@ module.exports = function (app) {
       let result = [];
       if (typeof(stock) === 'object' && stock.length > 1) {
         for (const stc of stock){
-          result.push(await getStockPrice(stc, isLikeTrue, ip))
+          let response = await getStockPrice(stc, isLikeTrue, ip)
+          response.rel_likes = response.likes;
+          delete response.likes
+          result.push(response)
         }
       } else {
         result = await getStockPrice(stock, isLikeTrue, ip)
       };
+      console.log(result);
       res.json({stockData:result});
   });
 };

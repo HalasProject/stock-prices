@@ -76,10 +76,10 @@ suite('Functional Tests', function() {
             expect(res).to.have.status(200);
             assert.equal(res.body.stockData[0].stock, 'GOOG');
             assert.equal(res.body.stockData[0].price, '2609.35');
-            assert.isNumber(res.body.stockData[0].likes);
+            assert.isNumber(res.body.stockData[0].rel_likes);
             assert.equal(res.body.stockData[1].stock, 'MSFT');
             assert.equal(res.body.stockData[1].price, '287.93');
-            assert.isNumber(res.body.stockData[1].likes);
+            assert.isNumber(res.body.stockData[1].rel_likes);
             done();
         });
     })

@@ -19,6 +19,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: false,
+    directives: {
+      "script-src": ["'self'"],
+      "style-src": ["'self'"]
+    },
+  })
+);
 //Index page (static HTML)
 app.route('/')
   .get(function (req, res) {
